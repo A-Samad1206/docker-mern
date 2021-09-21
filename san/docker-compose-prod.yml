@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - '4000:80'
+    container_name: proxy
+    image: app:prod
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.prod
+    image: server:prod
+    container_name: backend
